@@ -1,0 +1,32 @@
+.links {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  font-weight: 700;
+  font-size: 24px;
+
+  &::before {
+    content: "/";
+    margin: 0px 8px;
+  }
+
+  &:first-child::before {
+    display: none;
+  }
+
+  &.active {
+    a {
+      color: #9f0013;
+      pointer-events: none;
+    }
+  }
+
+  a {
+    transition-duration: 300ms;
+    &:hover {
+      color: #9f0013b8;
+    }
+  }
+}
