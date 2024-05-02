@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@conarti/feature-sliced/recommended",
+    "next/core-web-vitals",
+    "plugin:react-hooks/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended"
+  ],
+  "plugins": ["react-refresh", "@tanstack/query"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "react-refresh/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
