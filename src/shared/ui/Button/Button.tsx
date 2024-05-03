@@ -27,7 +27,7 @@ export const Button: FC<IProps> = ({
 
   return (
     <button className={classNames} onClick={onClick}>
-      <span>{loading ? "loading..." : children} </span>
+      <span>{loading ? "LOADING..." : children} </span>
     </button>
   );
 };

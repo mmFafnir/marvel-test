@@ -7,7 +7,7 @@ import styles from "./comics.list.module.scss";
 const COMICS_LIMIT = 8;
 
 export const ComicsList = () => {
-  const { isLoading, data, fetchNextPage, isFetching } =
+  const { isLoading, data, fetchNextPage, isFetching, hasNextPage } =
     useGetComicsQuery(COMICS_LIMIT);
 
   // TODO: Переделать в функцию mapper
@@ -15,8 +15,6 @@ export const ComicsList = () => {
   const content = data?.pages.map((item) =>
     item.results.map((comics) => <ComicsCard key={comics.id} comics={comics} />)
   );
-
-  console.log(data);
 
   return (
     <div className={styles.body}>
@@ -29,14 +27,16 @@ export const ComicsList = () => {
             ))}
         {content}
       </div>
-      <Button
-        onClick={fetchNextPage}
-        size="long"
-        className={styles.btn}
-        loading={isFetching}
-      >
-        LOAD MORE
-      </Button>
+      {!isLoading && hasNextPage && (
+        <Button
+          onClick={fetchNextPage}
+          size="long"
+          className={styles.btn}
+          loading={isFetching}
+        >
+          LOAD MORE
+        </Button>
+      )}
     </div>
   );
 };

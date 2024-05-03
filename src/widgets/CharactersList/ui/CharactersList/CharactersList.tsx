@@ -8,9 +8,10 @@ import styles from "./characters.list.module.scss";
 const CHARACTERS_LIMIT = 9;
 
 export const CharactersList = () => {
-  const { isLoading, data, fetchNextPage, isFetching } =
+  const { isLoading, data, fetchNextPage, isFetching, hasNextPage } =
     useGetCharactersQuery(CHARACTERS_LIMIT);
 
+  console.log(hasNextPage);
   const content = data?.pages.map((item) =>
     item.results.map((character) => (
       <CharacterCard
@@ -31,7 +32,7 @@ export const CharactersList = () => {
         {content}
       </div>
 
-      {!isLoading && (
+      {!isLoading && hasNextPage && (
         <Button
           loading={isFetching}
           className={styles.btn}

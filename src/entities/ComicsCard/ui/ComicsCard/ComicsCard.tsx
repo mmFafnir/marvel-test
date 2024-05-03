@@ -13,7 +13,7 @@ export const ComicsCard: FC<IProps> = ({ className = "", comics }) => {
   const isHavePrice = comics.prices.length > 0 && comics.prices[0].price > 0;
 
   return (
-    <Link href={"/"} className={`${styles.body} ${className}`}>
+    <Link href={"/comics"} className={`${styles.body} ${className}`}>
       <div className={styles.img}>
         <Image
           src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
