@@ -1,3 +1,9 @@
+import { ComicsList } from "@/widgets/ComicsList";
+
 export const ComicsPage = () => {
-  return <main>Comics</main>;
+  return (
+    <main>
+      <ComicsList />
+    </main>
+  );
 };
