@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, ReactNode } from "react";
-import { Header } from "@/widgets/header";
+import { Header } from "@/widgets/Header";
 import { QueryProvider } from "../providers/QueryProvider";
 
 import "../styles/null.css";
