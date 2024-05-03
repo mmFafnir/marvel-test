@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React, { FC, ReactNode } from "react";
-import styles from "../styles/image.bg.module.scss";
-
+import styles from "./image.bg.module.scss";
 interface IProps {
   children: ReactNode;
   src: string;

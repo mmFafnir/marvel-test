@@ -1,14 +1,14 @@
 import React from "react";
-import { Links } from "../Links";
+import { Links } from "../Links/Links";
 import styles from "./header.module.scss";
 
 export const Header = () => {
   return (
-    <div className={styles.body}>
+    <header className={styles.body}>
       <h1>
         <span>Marvel</span> information portal
       </h1>
       <Links />
-    </div>
+    </header>
   );
 };

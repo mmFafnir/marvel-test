@@ -1,10 +1,5 @@
-import { ImageBgLayout } from "@/layouts/ImageBgLayout";
-import { HomePage } from "@/pages/home-page";
+import { HomePage } from "@/pages/Home";
 
 export default function Home() {
-  return (
-    <ImageBgLayout src="/bg-image.png">
-      <HomePage />
-    </ImageBgLayout>
-  );
+  return <HomePage />;
 }
