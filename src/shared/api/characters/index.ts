@@ -1,1 +1,0 @@
-export { getCharacters } from "./getCharacters";

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
-import { TypeCharacter } from "@/shared/types";
+import { TypeCharacter } from "../../types/charactersTypes";
 import styles from "./character.card.module.scss";
 
 interface IProps {

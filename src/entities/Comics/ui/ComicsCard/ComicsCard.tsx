@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
-import { TypeComics } from "@/shared/types";
+import { TypeComics } from "../../types/comicsTypes";
 import styles from "./comics.card.module.scss";
 
 interface IProps {

@@ -1,1 +1,0 @@
-export { getComics } from "./getComics";

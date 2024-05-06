@@ -1,4 +1,4 @@
-import { TypeImage } from "./typeImage";
+import { TypeImage } from "@/shared/types/typeImage";
 
 export type TypeComics = {
   id: number;

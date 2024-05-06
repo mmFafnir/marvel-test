@@ -1,4 +1,4 @@
-import { IFetchContainer } from "../types";
+import { IFetchContainer } from "../types/containerTypes";
 
 export const checkNextPage = (lastPage: IFetchContainer<unknown>) => {
   const isHaveNext = lastPage.offset + lastPage.count >= lastPage.total;

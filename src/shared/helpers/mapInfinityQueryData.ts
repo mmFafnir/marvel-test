@@ -1,4 +1,4 @@
-import { IFetchContainer } from "../types";
+import { IFetchContainer } from "../types/containerTypes";
 
 export const mapInfinityQueryData = <T>(pages: IFetchContainer<T>[]) => {
   return pages

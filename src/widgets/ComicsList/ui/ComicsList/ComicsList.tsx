@@ -1,43 +1,35 @@
 "use client";
-import { ComicsCard, ComicsCardSkeleton } from "@/entities/ComicsCard";
-import { mapInfinityQueryData } from "@/shared/helpers";
-import { Button } from "@/shared/ui";
-import { useGetComicsQuery } from "../../hooks/useGetComicsQuery";
+import { FC } from "react";
+import { ComicsCard } from "@/entities/Comics";
+import { Button } from "@/shared/ui/Button/Button";
+import { useGetComicsQuery } from "../../api/useGetComicsQuery";
 import styles from "./comics.list.module.scss";
+import { ComicsListSkeleton } from "./ComicsListSkeleton";
 
-const COMICS_LIMIT = 8;
-
-export const ComicsList = () => {
+interface IProps {
+  limit?: number;
+}
+export const ComicsList: FC<IProps> = ({ limit = 8 }) => {
   const { isLoading, data, fetchNextPage, isFetching, hasNextPage } =
-    useGetComicsQuery(COMICS_LIMIT);
-
-  const renderLoadingSkeleton = () => {
-    return Array(COMICS_LIMIT)
-      .fill(0)
-      .map((_, index) => (
-        <ComicsCardSkeleton key={index} className={styles.card} />
-      ));
-  };
-
-  const renderListComics = () => {
-    if (!data) return <></>;
-    return mapInfinityQueryData(data.pages).map((comics) => (
-      <ComicsCard key={comics.id} comics={comics} />
-    ));
-  };
+    useGetComicsQuery(limit);
 
   return (
     <div className={styles.body}>
-      <div className={styles.list}>
-        {isLoading && renderLoadingSkeleton()}
-        {renderListComics()}
-      </div>
+      <ul className={styles.list}>
+        {isLoading && <ComicsListSkeleton count={limit} />}
+        {data &&
+          data.map((comics) => (
+            <li key={comics.id}>
+              <ComicsCard comics={comics} />
+            </li>
+          ))}
+      </ul>
       {!isLoading && hasNextPage && (
         <Button
-          onClick={fetchNextPage}
+          onClick={() => fetchNextPage()}
           size="long"
           className={styles.btn}
-          loading={isFetching}
+          isLoading={isFetching}
         >
           LOAD MORE
         </Button>

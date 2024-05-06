@@ -1,47 +1,37 @@
 "use client";
 
-import { CharacterCard, CharacterCardSkeleton } from "@/entities/CharacterCard";
-import { mapInfinityQueryData } from "@/shared/helpers";
-import { Button } from "@/shared/ui";
-import { useGetCharactersQuery } from "../../hooks/useGetCharactersQuery";
+import { FC } from "react";
+import { CharacterCard } from "@/entities/Character";
+import { Button } from "@/shared/ui/Button/Button";
+import { useGetCharactersQuery } from "../../api/useGetCharactersQuery";
 import styles from "./characters.list.module.scss";
+import { CharactersListSkeleton } from "./CharactersListSkeleton";
 
-const CHARACTERS_LIMIT = 9;
-
-export const CharactersList = () => {
+interface IProps {
+  limit?: number;
+}
+export const CharactersList: FC<IProps> = ({ limit = 9 }) => {
   const { isLoading, data, fetchNextPage, isFetching, hasNextPage } =
-    useGetCharactersQuery(CHARACTERS_LIMIT);
-
-  const renderLoadingSkeleton = () => {
-    return Array(CHARACTERS_LIMIT)
-      .fill(0)
-      .map((_, index) => <CharacterCardSkeleton key={index} />);
-  };
-
-  const renderListCharacters = () => {
-    if (!data) return <></>;
-    return mapInfinityQueryData(data.pages).map((character) => (
-      <CharacterCard
-        key={character.id}
-        className={styles.card}
-        character={character}
-      />
-    ));
-  };
+    useGetCharactersQuery(limit);
 
   return (
     <div className={styles.body}>
-      <div className={styles.list}>
-        {isLoading && renderLoadingSkeleton()}
-        {renderListCharacters()}
-      </div>
+      <ul className={styles.list}>
+        {isLoading && <CharactersListSkeleton count={limit} />}
+        {data &&
+          data.map((character) => (
+            <li key={character.id}>
+              <CharacterCard className={styles.card} character={character} />
+            </li>
+          ))}
+      </ul>
 
       {!isLoading && hasNextPage && (
         <Button
-          loading={isFetching}
+          isLoading={isFetching}
           className={styles.btn}
           size="long"
-          onClick={fetchNextPage}
+          onClick={() => fetchNextPage()}
         >
           LOAD MORE
         </Button>

@@ -1,12 +1,21 @@
+import Image from "next/image";
 import { CharactersList } from "@/widgets/CharactersList";
-import { ImageBgLayout } from "../ImageBgLayout/ImageBgLayout";
+import styles from "./home.page.module.scss";
 
 export const HomePage = () => {
   return (
-    <ImageBgLayout src="/bg-image.png">
+    <>
       <main>
         <CharactersList />
       </main>
-    </ImageBgLayout>
+      <div className={styles.imageBg}>
+        <Image
+          src={"/bg-image.png"}
+          alt="background image"
+          width={467}
+          height={372}
+        />
+      </div>
+    </>
   );
 };

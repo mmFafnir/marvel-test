@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { routeLinks } from "@/shared/configs";
+import { routeLinks } from "@/shared/configs/routeLinks";
 import styles from "./links.module.scss";
 
 export const Links = () => {
