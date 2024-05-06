@@ -1,0 +1,46 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 200px;
+  width: 200px;
+  transition-duration: 300ms;
+
+  @media (min-width: 901px) {
+    &:hover {
+      box-shadow: 0 5px 20px 0 #9f0013;
+      transform: translateY(-16px);
+    }
+  }
+}
+
+.img {
+  position: relative;
+  padding-top: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.footer {
+  flex: 0 0 118px;
+  padding: 15px;
+  background-color: #232222;
+  color: #fff;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.skeleton {
+  pointer-events: none;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}

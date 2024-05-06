@@ -1,5 +1,5 @@
-import { Homepage } from '@/pages/Homepage';
+import { HomePage } from "@/pagesFSD/Home";
 
 export default function Home() {
-  return <Homepage />;
+  return <HomePage />;
 }
