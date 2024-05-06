@@ -1,0 +1,1 @@
+export { mapInfinityQueryData } from "./mapInfinityQueryData";
