@@ -9,7 +9,8 @@ export const Links = () => {
   const pathname = usePathname();
 
   const isActivePathname = (path: string) => {
-    if (path === "/") return pathname === "/";
+    if (path === "/")
+      return pathname === "/" || pathname.includes("/characters");
     if (pathname?.includes(path)) return true;
     return false;
   };

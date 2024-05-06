@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
+import { ImageUI } from "@/shared/ui/ImageUI/ImageUI";
 import { TypeComics } from "../../types/comicsTypes";
 import styles from "./comics.card.module.scss";
 
@@ -13,9 +13,12 @@ export const ComicsCard: FC<IProps> = ({ className = "", comics }) => {
   const isHavePrice = comics.prices.length > 0 && comics.prices[0].price > 0;
 
   return (
-    <Link href={"/comics"} className={`${styles.body} ${className}`}>
+    <Link
+      href={`/comics/${comics.id}`}
+      className={`${styles.body} ${className}`}
+    >
       <div className={styles.img}>
-        <Image
+        <ImageUI
           src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
           alt={comics.title}
           width={200}

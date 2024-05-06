@@ -1,0 +1,30 @@
+.list {
+  margin-top: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 13px;
+}
+
+.scroll {
+  max-height: 305px;
+}
+
+.link {
+  display: block;
+  margin: 0px 2px;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  line-height: 1.3;
+  transition-duration: 300ms;
+
+  @media (min-width: 901px) {
+    &:hover {
+      transform: translateY(3px);
+      box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+  }
+}
