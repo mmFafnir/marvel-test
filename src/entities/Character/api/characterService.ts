@@ -12,7 +12,18 @@ class Service {
     const { data } = await axios.get(
       `${this.URL}?limit=${limit}&offset=${offset}`
     );
-    console.log(data);
+    return data.data;
+  }
+
+  async searchByName(name: string): Promise<IFetchContainer<TypeCharacter>> {
+    const { data } = await axios.get(
+      `${this.URL}?limit=${1}&offset=${0}&name=${name}`
+    );
+    return data.data;
+  }
+
+  async getById(id: number): Promise<IFetchContainer<TypeCharacter>> {
+    const { data } = await axios.get(`${this.URL}/${id}`);
     return data.data;
   }
 }

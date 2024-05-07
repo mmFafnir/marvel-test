@@ -1,15 +1,13 @@
-import { FC, HTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 import styles from "./button.module.scss";
+import { IButtonProps } from "./buttonProps";
 
-interface IProps extends HTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
-  type?: "grey" | "default" | "long";
-  size?: "long";
-  isLoading?: boolean;
-}
+interface IProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    IButtonProps {}
 export const Button: FC<IProps> = ({
   children,
-  type = "default",
+  typeColor = "default",
   size = "",
   isLoading,
   className,
@@ -17,7 +15,7 @@ export const Button: FC<IProps> = ({
 }) => {
   const classNames = [
     styles.body,
-    styles[type],
+    styles[typeColor],
     styles[size],
     className,
     isLoading ? styles.loading : "",
@@ -25,6 +23,7 @@ export const Button: FC<IProps> = ({
 
   return (
     <button className={classNames} {...props}>
+      <span></span>
       {isLoading ? "LOADING..." : children}
     </button>
   );

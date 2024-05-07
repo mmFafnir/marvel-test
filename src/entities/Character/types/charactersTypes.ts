@@ -1,4 +1,17 @@
 import { TypeImage } from "@/shared/types/typeImage";
+import { urlType } from "@/shared/types/urlType";
+
+export type TypeCharacterComicsItem = {
+  name: string;
+  resourceURI: string;
+};
+
+export type TypeCharacterComicsList = {
+  available: number;
+  collectionURI: string;
+  items: TypeCharacterComicsItem[];
+  returned: number;
+};
 
 export type TypeCharacter = {
   id: number;
@@ -6,6 +19,7 @@ export type TypeCharacter = {
   modified: string;
   name: string;
   resourceURI: string;
-  comics: [];
+  comics: TypeCharacterComicsList;
   thumbnail: TypeImage;
+  urls: urlType[];
 };

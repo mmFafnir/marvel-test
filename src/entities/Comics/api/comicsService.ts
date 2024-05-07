@@ -14,6 +14,11 @@ class Service {
     );
     return data.data;
   }
+
+  async getById(id: number): Promise<IFetchContainer<TypeComics>> {
+    const { data } = await axios.get(`${this.URL}/${id}`);
+    return data.data;
+  }
 }
 
 export const comicsService = new Service();
