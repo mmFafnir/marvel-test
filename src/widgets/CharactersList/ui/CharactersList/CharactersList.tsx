@@ -31,7 +31,8 @@ export const CharactersList: FC<IProps> = ({ limit = 9 }) => {
       {isError && <ErrorUI onClick={refetch} />}
       <ul className={styles.list}>
         {isLoading && <CharactersListSkeleton count={limit} />}
-        {data &&
+        {!isError &&
+          data &&
           data.map((character) => (
             <li key={character.id}>
               <CharacterCard
@@ -43,7 +44,7 @@ export const CharactersList: FC<IProps> = ({ limit = 9 }) => {
           ))}
       </ul>
 
-      {!isLoading && hasNextPage && (
+      {!isLoading && !isError && hasNextPage && (
         <Button
           isLoading={isFetching}
           className={styles.btn}

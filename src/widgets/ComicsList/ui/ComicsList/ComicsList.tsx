@@ -26,14 +26,15 @@ export const ComicsList: FC<IProps> = ({ limit = 8 }) => {
       {isError && <ErrorUI onClick={refetch} />}
       <ul className={styles.list}>
         {isLoading && <ComicsListSkeleton count={limit} />}
-        {data &&
+        {!isError &&
+          data &&
           data.map((comics) => (
             <li key={comics.id}>
               <ComicsCard comics={comics} />
             </li>
           ))}
       </ul>
-      {!isLoading && hasNextPage && (
+      {!isLoading && !isError && hasNextPage && (
         <Button
           onClick={() => fetchNextPage()}
           size="long"
