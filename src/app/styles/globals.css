@@ -1,12 +1,12 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  max-width: 1150px;
+  max-width: 1140px;
+  padding: 0px 20px;
   margin: 0 auto;
 }
 
 .simplebar-track.simplebar-vertical {
   width: 7px;
-  padding: 0px 20px;
   padding-bottom: 50px;
 }

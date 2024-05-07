@@ -4,30 +4,28 @@ import { Skeleton } from "./Skeleton";
 
 const placeholderTexts = {
   notId: "Please select a character to see information",
-  isLoading: "Loading...",
-  isLoadingError: "Character not found",
+  loading: "Loading...",
+  error: "Character not found",
 };
 
 interface IProps {
   id: string | null;
   isLoading: boolean;
-  isLoadingError: boolean;
+  isError: boolean;
 }
 
-export const CharacterDescStatus: FC<IProps> = ({
-  id,
-  isLoading,
-  isLoadingError,
-}) => {
+export const CharacterDescStatus: FC<IProps> = ({ id, isLoading, isError }) => {
   const renderText = () => {
     if (!id) return placeholderTexts.notId;
-    if (isLoading) return placeholderTexts.isLoading;
-    if (isLoadingError) return placeholderTexts.isLoadingError;
+    if (isLoading) return placeholderTexts.loading;
+    if (isError) return placeholderTexts.error;
   };
   return (
     <>
       <p className={styles.text}>{renderText()}</p>
-      <Skeleton />
+      <div className={styles.skeleton}>
+        <Skeleton />
+      </div>
     </>
   );
 };

@@ -22,3 +22,17 @@
   font-size: 14px;
   margin-right: 24px;
 }
+
+@media (max-width: 350px) {
+  .search {
+    flex-wrap: wrap;
+    button {
+      flex: 1 1 100%;
+    }
+  }
+  .input {
+    flex: 1 1 100%;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+}

@@ -10,11 +10,17 @@ interface IProps {
 }
 
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
-  const comics = await comicsService.getById(Number(params.id));
-  return {
-    title: comics.results[0].title,
-    description: comics.results[0].description,
-  };
+  try {
+    const comics = await comicsService.getById(Number(params.id));
+    return {
+      title: comics.results[0].title,
+      description: comics.results[0].description,
+    };
+  } catch (error) {
+    return {
+      title: "Comics not found",
+    };
+  }
 }
 
 const ComicsIdPage: NextPage<IProps> = async ({ params }) => {

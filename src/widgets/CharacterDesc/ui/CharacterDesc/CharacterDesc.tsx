@@ -1,7 +1,7 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { queryParams } from "@/shared/configs/queryParams";
+import { useEffect } from "react";
+import { useQueryParamsHook } from "@/shared/hooks/useQueryParamsHook";
 import { LinkButton } from "@/shared/ui/Button/LinkButton";
 import { ImageUI } from "@/shared/ui/ImageUI/ImageUI";
 import { useGetDescCharacterQuery } from "../../api/useGetDescCharacterQuery";
@@ -10,21 +10,36 @@ import { CharacterDescStatus } from "../CharacterDescStatus/CharacterDescStatus"
 import styles from "./character.desc.module.scss";
 
 export const CharacterDesc = () => {
-  const searchParams = useSearchParams();
-  const id = searchParams.get(queryParams.characterId);
+  const queryParams = useQueryParamsHook();
 
+  const id = queryParams.get("characterId");
   const { data, isLoading, isLoadingError } = useGetDescCharacterQuery(
     Number(id)
   );
   const wikiUrl = data?.urls.find((url) => url.type === "wiki");
+  const removeQueryParam = () => {
+    queryParams.remove("characterId");
+  };
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.code !== "Escape") return;
+      removeQueryParam();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
-    <div className={styles.body}>
+    <div className={`${styles.body} ${id ? styles.show : ""}`}>
+      <button onClick={removeQueryParam} className={styles.mobClose}>
+        X
+      </button>
       {!data && (
         <CharacterDescStatus
           id={id}
           isLoading={isLoading}
-          isLoadingError={isLoadingError}
+          isError={isLoadingError}
         />
       )}
       {data && (

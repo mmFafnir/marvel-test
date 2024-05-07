@@ -6,7 +6,8 @@ export const Header = () => {
   return (
     <header className={styles.body}>
       <h1>
-        <span>Marvel</span> information portal
+        <span className={styles.title}>Marvel</span>{" "}
+        <span>information portal</span>
       </h1>
       <Links />
     </header>

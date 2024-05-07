@@ -28,3 +28,19 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+  .list {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .scroll {
+    flex: 1 1 auto;
+    max-height: none;
+    height: 80%;
+  }
+}
