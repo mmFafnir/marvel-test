@@ -18,7 +18,6 @@ export const RootLayout: FC<RootLayoutProps> = ({ children }) => {
     <QueryProvider>
       <div className="wrapper">
         <NextTopLoader showSpinner={false} color="#9f0013" />
-
         <Header />
         {children}
       </div>
