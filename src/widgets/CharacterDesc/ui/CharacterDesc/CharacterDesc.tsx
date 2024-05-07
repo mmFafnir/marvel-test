@@ -2,8 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { queryParams } from "@/shared/configs/queryParams";
-import { replaceUrl } from "@/shared/helpers/replaceUrl";
-import { Button } from "@/shared/ui/Button/Button";
+import { LinkButton } from "@/shared/ui/Button/LinkButton";
 import { ImageUI } from "@/shared/ui/ImageUI/ImageUI";
 import { useGetDescCharacterQuery } from "../../api/useGetDescCharacterQuery";
 import { CharacterDescList } from "../CharacterDescList/CharacterDescList";
@@ -41,16 +40,11 @@ export const CharacterDesc = () => {
             </div>
             <div className={styles.actions}>
               <h2 className={styles.name}>{data.name}</h2>
-              <Button href={{ to: replaceUrl(data.resourceURI) }}>
-                HOMEPAGE
-              </Button>
+              <LinkButton href={`/characters/${data.id}`}>HOMEPAGE</LinkButton>
               {wikiUrl && (
-                <Button
-                  href={{ to: wikiUrl.url, target: "_blank" }}
-                  typeColor="grey"
-                >
+                <LinkButton href={wikiUrl.url} target="_blank" typeColor="grey">
                   WIKI
-                </Button>
+                </LinkButton>
               )}
             </div>
           </div>

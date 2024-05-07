@@ -1,11 +1,13 @@
-import { ButtonHTMLAttributes, FC } from "react";
+import Link from "next/link";
+import { AnchorHTMLAttributes, FC } from "react";
 import styles from "./button.module.scss";
 import { IButtonProps } from "./buttonProps";
 
-interface IProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    IButtonProps {}
-export const Button: FC<IProps> = ({
+interface IProps extends IButtonProps, AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string;
+}
+
+export const LinkButton: FC<IProps> = ({
   children,
   typeColor = "default",
   size = "",
@@ -22,9 +24,9 @@ export const Button: FC<IProps> = ({
   ].join(" ");
 
   return (
-    <button className={classNames} {...props}>
+    <Link {...props} className={classNames}>
       <span></span>
       {isLoading ? "LOADING..." : children}
-    </button>
+    </Link>
   );
 };

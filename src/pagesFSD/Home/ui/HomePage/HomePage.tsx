@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Suspense } from "react";
 import { CharacterDesc } from "@/widgets/CharacterDesc";
 import { CharactersList } from "@/widgets/CharactersList";
-import { Search } from "@/features/Search";
+import { SearchCharacterByName } from "@/features/SearchCharacterByName";
 import styles from "./home.page.module.scss";
 
 export const HomePage = () => {
@@ -19,7 +19,7 @@ export const HomePage = () => {
             <Suspense>
               <CharacterDesc />
             </Suspense>
-            <Search />
+            <SearchCharacterByName />
           </div>
         </aside>
       </main>

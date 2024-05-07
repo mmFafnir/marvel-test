@@ -3,10 +3,10 @@
 import { FormEvent, useState } from "react";
 import { Button } from "@/shared/ui/Button/Button";
 import { useSearchCharacterQuery } from "../../api/useSearchCharacterQuery";
-import { SearchContent } from "../SearchContent/SearchContent";
+import { SearchCharByNameContent } from "../SearchCharByNameContent/SearchCharByNameContent";
 import styles from "./search.module.scss";
 
-export const Search = () => {
+export const SearchCharacterByName = () => {
   const [value, setValue] = useState<string>("");
   const [search, setSearch] = useState<string>("");
   const [isRequired, setIsRequired] = useState<boolean>(false);
@@ -33,7 +33,7 @@ export const Search = () => {
         <Button disabled={isFetching}>FIND</Button>
       </form>
 
-      <SearchContent
+      <SearchCharByNameContent
         isRequired={isRequired}
         isLoading={isFetching}
         character={data}

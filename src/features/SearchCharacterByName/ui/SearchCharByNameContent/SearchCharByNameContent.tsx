@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { TypeCharacter } from "@/entities/Character";
-import { Button } from "@/shared/ui/Button/Button";
+import { LinkButton } from "@/shared/ui/Button/LinkButton";
 import styles from "./search.content.module.scss";
 
 interface IProps {
@@ -14,7 +14,7 @@ const errorText = {
   empty: "The character was not found. Check the name and try again",
 };
 
-export const SearchContent: FC<IProps> = ({
+export const SearchCharByNameContent: FC<IProps> = ({
   isLoading,
   isRequired,
   character,
@@ -36,12 +36,9 @@ export const SearchContent: FC<IProps> = ({
           <p className={styles.success}>
             There is! Visit {character[0].name} page?
           </p>
-          <Button
-            href={{ to: `/characters/${character[0].id}` }}
-            typeColor="grey"
-          >
+          <LinkButton href={`/characters/${character[0].id}`} typeColor="grey">
             TO PAGE
-          </Button>
+          </LinkButton>
         </>
       )}
     </div>
