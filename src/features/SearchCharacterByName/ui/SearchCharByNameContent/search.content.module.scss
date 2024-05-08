@@ -16,3 +16,10 @@
 .success {
   color: #03710e;
 }
+@media (max-width: 500px) {
+  .content {
+    p {
+      font-size: 16px;
+    }
+  }
+}

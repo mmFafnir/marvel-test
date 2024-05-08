@@ -21,14 +21,14 @@ export const CharacterCard: FC<IProps> = ({
       scroll={false}
       className={`${className} ${styles.body} ${isActive ? styles.active : ""}`}
     >
-      {/* <div className={styles.img}> */}
-      <ImageUI
-        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-        alt={character.name}
-        width={200}
-        height={200}
-      />
-      {/* </div> */}
+      <div className={styles.img}>
+        <ImageUI
+          src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+          alt={character.name}
+          width={200}
+          height={200}
+        />
+      </div>
       <div className={styles.footer}>
         <h3 className={styles.title}>{character.name}</h3>
       </div>

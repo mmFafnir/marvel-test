@@ -1,30 +1,34 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { queryParams } from "@/shared/configs/queryParams";
+import { useQueryParamsHook } from "@/shared/hooks/useQueryParamsHook";
 import { LinkButton } from "@/shared/ui/Button/LinkButton";
 import { ImageUI } from "@/shared/ui/ImageUI/ImageUI";
 import { useGetDescCharacterQuery } from "../../api/useGetDescCharacterQuery";
 import { CharacterDescList } from "../CharacterDescList/CharacterDescList";
 import { CharacterDescStatus } from "../CharacterDescStatus/CharacterDescStatus";
+import { CharacterDescWrapper } from "../CharacterWrapperDesc/CharacterDescWrapper";
 import styles from "./character.desc.module.scss";
 
 export const CharacterDesc = () => {
-  const searchParams = useSearchParams();
-  const id = searchParams.get(queryParams.characterId);
+  const { getQueryParam, removeQueryParam } =
+    useQueryParamsHook<"character_id">();
 
+  const id = getQueryParam("character_id");
   const { data, isLoading, isLoadingError } = useGetDescCharacterQuery(
     Number(id)
   );
   const wikiUrl = data?.urls.find((url) => url.type === "wiki");
 
   return (
-    <div className={styles.body}>
+    <CharacterDescWrapper
+      isOpen={!!id}
+      onClickClose={() => removeQueryParam("character_id")}
+    >
       {!data && (
         <CharacterDescStatus
           id={id}
           isLoading={isLoading}
-          isLoadingError={isLoadingError}
+          isError={isLoadingError}
         />
       )}
       {data && (
@@ -56,6 +60,6 @@ export const CharacterDesc = () => {
           )}
         </>
       )}
-    </div>
+    </CharacterDescWrapper>
   );
 };

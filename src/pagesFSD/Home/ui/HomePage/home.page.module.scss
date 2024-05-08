@@ -4,6 +4,7 @@
   position: relative;
   z-index: 2;
   padding-bottom: 20px;
+  margin-top: 50px;
 }
 
 .content {
@@ -19,8 +20,6 @@
 
 .sticky {
   position: sticky;
-  // height: 100vh;
-  // height: 100dvh;
   top: 20px;
 
   > div {
@@ -41,5 +40,26 @@
     position: absolute;
     bottom: 0;
     right: 10%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .sidebar {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 900px) {
+  .body {
+    flex-wrap: wrap;
+  }
+  .sidebar {
+    flex: 1 1 100%;
+    max-width: none;
+    order: -1;
+    margin: 0;
+  }
+  .sticky {
+    position: static;
   }
 }
