@@ -13,8 +13,8 @@ interface IProps {
   limit?: number;
 }
 export const CharactersList: FC<IProps> = ({ limit = 9 }) => {
-  const queryParams = useQueryParamsHook();
-  const queryCharacterId = queryParams.get("characterId");
+  const { getQueryParam } = useQueryParamsHook<"character_id">();
+  const queryCharacterId = getQueryParam("character_id");
 
   const {
     isLoading,

@@ -2,29 +2,40 @@
 
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { queryParams } from "../configs/queryParams";
+import { useCallback } from "react";
 
-type TypeKey = keyof typeof queryParams;
-
-export const useQueryParamsHook = () => {
+export const useQueryParamsHook = <T extends string>() => {
   const navigate = useRouter();
   const searchParamsQuery = useSearchParams();
 
-  return {
-    get: (key: TypeKey) => {
-      return searchParamsQuery.get(queryParams[key]);
+  const getQueryParam = useCallback(
+    <J extends string | null>(key: T): J => {
+      return searchParamsQuery.get(key) as J;
     },
+    [searchParamsQuery]
+  );
 
-    set: (key: TypeKey, value: string) => {
+  const setQueryParam = useCallback(
+    (key: T, value: string) => {
       const url = new URL(window.location.href);
       url.searchParams.set(key, value);
       navigate.push(url.href, { scroll: false });
     },
+    [navigate]
+  );
 
-    remove: (key: TypeKey) => {
+  const removeQueryParam = useCallback(
+    (key: T) => {
       const url = new URL(window.location.href);
-      url.searchParams.delete(queryParams[key]);
+      url.searchParams.delete(key);
       navigate.push(url.href, { scroll: false });
     },
+    [navigate]
+  );
+
+  return {
+    getQueryParam,
+    setQueryParam,
+    removeQueryParam,
   };
 };

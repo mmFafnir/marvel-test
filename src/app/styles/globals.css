@@ -10,3 +10,9 @@
   width: 7px;
   padding-bottom: 50px;
 }
+
+@media (max-width: 900px) {
+  .no-scroll-mob {
+    overflow: hidden;
+  }
+}
