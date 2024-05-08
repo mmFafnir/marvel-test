@@ -1,8 +1,6 @@
 .body {
   display: flex;
   flex-direction: column;
-  flex: 0 1 225px;
-  width: 225px;
   transition-duration: 300ms;
 
   @media (min-width: 901px) {
