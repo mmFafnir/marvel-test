@@ -15,6 +15,7 @@ export const CharacterElementPage: FC<IProps> = ({ character }) => {
         <div className={styles.image}>
           <ImageUI
             src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+            height={200}
             alt={character.name}
           />
         </div>

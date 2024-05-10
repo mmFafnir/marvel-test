@@ -19,7 +19,6 @@ export const ComicsCard: FC<IProps> = ({ className = "", comics }) => {
     >
       <div className={styles.img}>
         <ImageUI
-
           src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
           alt={comics.title}
           width={200}
