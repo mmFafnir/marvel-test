@@ -25,6 +25,10 @@ export const CharacterDescWrapper: FC<IProps> = ({
     } else {
       document.body.classList.remove("no-scroll-mob");
     }
+
+    return () => {
+      document.body.classList.remove("no-scroll-mob");
+    };
   }, [isOpen]);
 
   return (

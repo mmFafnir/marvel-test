@@ -1,5 +1,6 @@
 .content {
   display: flex;
+  align-items: flex-start;
   margin-top: 50px;
 
   h1 {
@@ -23,7 +24,7 @@
 
 .header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 28px;
 }
@@ -33,6 +34,7 @@
   font-weight: 700;
   font-size: 18px;
   transition-duration: 300ms;
+  margin-left: 10px;
   @media (min-width: 901px) {
     &:hover {
       color: #9f0013;
@@ -53,4 +55,24 @@
   color: #9f0013;
   font-weight: 700;
   font-size: 24px;
+}
+
+@media (max-width: 800px) {
+  .image {
+    flex-basis: 150px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-bottom: 20px;
+  }
+  .image {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
 }

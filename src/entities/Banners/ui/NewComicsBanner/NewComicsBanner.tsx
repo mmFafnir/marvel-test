@@ -6,7 +6,12 @@ import styles from "./new.comics.banner.module.scss";
 export const NewComicsBanner = () => {
   return (
     <div className={styles.body}>
-      <Image src={avengersImg} width={152} alt="avengers" />
+      <Image
+        src={avengersImg}
+        width={152}
+        alt="avengers"
+        className={styles.teamImage}
+      />
       <h2 className={styles.text}>
         New comics every week! <br /> Stay tuned!
       </h2>

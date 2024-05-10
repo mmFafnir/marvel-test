@@ -1,5 +1,6 @@
 .content {
   display: flex;
+  align-items: flex-start;
   margin-top: 50px;
 }
 
@@ -23,5 +24,29 @@
 
   p {
     font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    margin-top: 30px;
+  }
+  .image {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .content {
+    flex-wrap: wrap;
+  }
+
+  .image {
+    margin-bottom: 20px;
+    margin-right: 0;
+    flex: 1 1 100%;
+  }
+  .desc {
+    flex: 1 1 100%;
   }
 }
