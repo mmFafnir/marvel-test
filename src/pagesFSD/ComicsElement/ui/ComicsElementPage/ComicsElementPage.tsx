@@ -19,6 +19,7 @@ export const ComicsElementPage: FC<IProps> = ({ comics }) => {
             src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
             alt={comics.title}
             width={293}
+            height={200}
           />
         </div>
         <div className={styles.desc}>
