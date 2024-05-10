@@ -1,1 +1,1 @@
-export const apiUrl = "http://gateway.marvel.com/v1/public/";
+export const apiUrl = "https://gateway.marvel.com/v1/public/";
