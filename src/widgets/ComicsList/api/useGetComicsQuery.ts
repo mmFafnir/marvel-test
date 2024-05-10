@@ -2,11 +2,11 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { comicsService } from "@/entities/Comics";
 import { checkNextPage } from "@/shared/helpers/checkNextPage";
 import { extractInfinityQueryData } from "@/shared/helpers/extractInfinityQueryData";
-import { useSafeFetchAndScroll } from "@/shared/hooks/useSafeFetchAndScroll";
+import { useSaveFetchAndScroll } from "@/shared/hooks/useSaveFetchAndScroll";
 
 export const useGetComicsQuery = (limit?: number) => {
   const { setCountFetch, getCountFetch, setScrollTo } =
-    useSafeFetchAndScroll("comics");
+    useSaveFetchAndScroll("comics");
 
   const currentLimit = limit || 8;
   return useInfiniteQuery({

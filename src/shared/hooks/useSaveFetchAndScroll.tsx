@@ -8,7 +8,7 @@ import {
 
 const isBrowser = typeof window !== "undefined";
 
-export const useSafeFetchAndScroll = (name: string) => {
+export const useSaveFetchAndScroll = (name: string) => {
   const pathname = usePathname();
   const refFirstScrollPos = useRef<number | null>(
     isBrowser ? getSessionStorage(`scrollY-${name}`) : null
@@ -37,7 +37,6 @@ export const useSafeFetchAndScroll = (name: string) => {
 
   const checkError = useCallback(() => {
     const value = getSessionStorage(`scroll-${pathname}`);
-    console.log(value, name);
     if (value && value !== name) {
       throw Error("the hook has already been initialized on this route");
     }

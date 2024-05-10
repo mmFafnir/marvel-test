@@ -3,12 +3,12 @@ import { characterService } from "@/entities/Character";
 import { checkNextPage } from "@/shared/helpers/checkNextPage";
 import { extractInfinityQueryData } from "@/shared/helpers/extractInfinityQueryData";
 import { setLocalStorage } from "@/shared/helpers/localStorage";
-import { useSafeFetchAndScroll } from "@/shared/hooks/useSafeFetchAndScroll";
+import { useSaveFetchAndScroll } from "@/shared/hooks/useSaveFetchAndScroll";
 import { EnumStorage } from "@/shared/types/enumStorage";
 
 export const useGetCharactersQuery = (limit?: number) => {
   const { setCountFetch, getCountFetch, setScrollTo } =
-    useSafeFetchAndScroll("characters");
+    useSaveFetchAndScroll("characters");
 
   const currentLimit = limit || 9;
   return useInfiniteQuery({
